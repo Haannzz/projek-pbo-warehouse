@@ -1,14 +1,34 @@
 [
     {
-        "kode": "1212",
-        "nama": "Sedar",
-        "stok": 123,
-        "kategori": "Elektronik"
+        "kode": "1001",
+        "nama": "Ayam Tiren",
+        "stok": 1,
+        "kategori": "Makanan",
+        "kadaluarsa": "10-10-2111",
+        "halal": "Tidak"
     },
     {
-        "kode": "120010",
-        "nama": "Laptop",
-        "stok": 200,
-        "kategori": "Elektronik"
+        "kode": "1002",
+        "nama": "Casan HP",
+        "stok": 2,
+        "kategori": "Elektronik",
+        "garansi": "12",
+        "daya": "65"
+    },
+    {
+        "kode": "1003",
+        "nama": "Sofa",
+        "stok": 2,
+        "kategori": "Furniture",
+        "material": "Kayu",
+        "berat": 69.0
+    },
+    {
+        "kode": "1004",
+        "nama": "Babi Panggang Karo",
+        "stok": 2,
+        "kategori": "Makanan",
+        "kadaluarsa": "20-12-2026",
+        "halal": "Tidak"
     }
 ]
