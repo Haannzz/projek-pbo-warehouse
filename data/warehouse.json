@@ -10,11 +10,5 @@
         "nama": "Laptop",
         "stok": 200,
         "kategori": "Elektronik"
-    },
-    {
-        "kode": "1000",
-        "nama": "Kontol",
-        "stok": 1,
-        "kategori": "Elektronik"
     }
 ]
