@@ -1,0 +1,20 @@
+[
+    {
+        "kode": "1212",
+        "nama": "Sedar",
+        "stok": 123,
+        "kategori": "Elektronik"
+    },
+    {
+        "kode": "120010",
+        "nama": "Laptop",
+        "stok": 200,
+        "kategori": "Elektronik"
+    },
+    {
+        "kode": "1000",
+        "nama": "Kontol",
+        "stok": 1,
+        "kategori": "Elektronik"
+    }
+]
