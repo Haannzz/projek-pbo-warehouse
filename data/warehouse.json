@@ -1,42 +1,18 @@
 [
     {
         "kode": "1001",
-        "nama": "Ayam Tiren",
-        "stok": 1,
-        "kategori": "Makanan",
-        "kadaluarsa": "10-10-2111",
-        "halal": "Tidak"
+        "nama": "TV",
+        "stok": 10,
+        "kategori": "Elektronik",
+        "garansi": "36",
+        "daya": "250"
     },
     {
         "kode": "1002",
-        "nama": "Casan HP",
-        "stok": 2,
-        "kategori": "Elektronik",
-        "garansi": "12",
-        "daya": "66"
-    },
-    {
-        "kode": "1003",
         "nama": "Sofa",
-        "stok": 2,
+        "stok": 1,
         "kategori": "Furniture",
-        "material": "Kayu",
-        "berat": 68.6
-    },
-    {
-        "kode": "1004",
-        "nama": "Babi Panggang Karo",
-        "stok": 2,
-        "kategori": "Makanan",
-        "kadaluarsa": "20-12-2026",
-        "halal": "Tidak"
-    },
-    {
-        "kode": "1005",
-        "nama": "Babi Hutan",
-        "stok": 2,
-        "kategori": "Makanan",
-        "kadaluarsa": "31-12-2026",
-        "halal": "Tidak"
+        "material": "Kayu Jati",
+        "berat": 80.0
     }
 ]

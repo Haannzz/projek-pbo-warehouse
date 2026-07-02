@@ -10,14 +10,11 @@ class WarehouseApp:
         self.root.geometry("950x600")
         self.root.configure(bg="#F3F4F6")
         
-        # Configure Custom Styles
         self.style = ttk.Style()
         self.style.theme_use("clam")
         
-        # Global font settings
         self.style.configure(".", font=("Segoe UI", 10), background="#F3F4F6", foreground="#1F2937")
         
-        # Treeview styling
         self.style.configure(
             "Treeview",
             rowheight=28,
@@ -40,7 +37,7 @@ class WarehouseApp:
             relief="flat",
             padding=5
         )
-        # Combobox styling
+
         self.style.configure(
             "TCombobox",
             arrowcolor="#4F46E5",
@@ -49,14 +46,12 @@ class WarehouseApp:
             darkcolor="#FFFFFF",
             lightcolor="#FFFFFF"
         )
-        # Build UI layout
+
         self.buat_header()
         
-        # Main Container
         self.main_container = tk.Frame(self.root, bg="#F3F4F6")
         self.main_container.pack(fill="both", expand=True, padx=20, pady=(10, 20))
         
-        # Split into Left Pane (Form) and Right Pane (Table)
         self.left_pane = tk.Frame(self.main_container, bg="#F3F4F6")
         self.left_pane.pack(side="left", fill="both", padx=(0, 10))
         self.right_pane = tk.Frame(self.main_container, bg="#F3F4F6")
@@ -80,8 +75,7 @@ class WarehouseApp:
             pady=15
         )
         title_label.pack(side="left", padx=20)
-        
-        # Exit Button with confirmation (packed to the right side of header)
+
         exit_btn = tk.Button(
             header_frame,
             text="Keluar",

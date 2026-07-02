@@ -163,6 +163,7 @@ class WarehouseManager:
                 berat = float(berat_str)
             except ValueError:
                 raise ValueError("Berat harus berupa angka")
+            
             if berat <= 0:
                 raise ValueError("Berat tidak boleh 0 atau kurang")
             barang.set_material(material)

@@ -24,14 +24,9 @@ class BarangFurniture(Barang):
         return "Furniture"
 
     def to_dict(self):
-
         data = super().to_dict()
-
         data.update({
-
             "material": self.__material,
             "berat": self.__berat
-
         })
-
         return data
