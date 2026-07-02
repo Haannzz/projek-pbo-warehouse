@@ -13,7 +13,7 @@
         "stok": 2,
         "kategori": "Elektronik",
         "garansi": "12",
-        "daya": "65"
+        "daya": "66"
     },
     {
         "kode": "1003",
@@ -21,7 +21,7 @@
         "stok": 2,
         "kategori": "Furniture",
         "material": "Kayu",
-        "berat": 69.0
+        "berat": 68.6
     },
     {
         "kode": "1004",
@@ -29,6 +29,14 @@
         "stok": 2,
         "kategori": "Makanan",
         "kadaluarsa": "20-12-2026",
+        "halal": "Tidak"
+    },
+    {
+        "kode": "1005",
+        "nama": "Babi Hutan",
+        "stok": 2,
+        "kategori": "Makanan",
+        "kadaluarsa": "31-12-2026",
         "halal": "Tidak"
     }
 ]

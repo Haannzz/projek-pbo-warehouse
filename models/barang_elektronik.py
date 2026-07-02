@@ -18,12 +18,6 @@ class BarangElektronik(Barang):
     def set_daya(self, daya):
         self.__daya = daya
 
-    def masa_garansi(self):
-        return f"{self.__garansi} Bulan"
-    
-    def cek_daya(self):
-        return f"{self.__daya} Watt"
-    
     def kategori(self):
         return "Elektronik"
     

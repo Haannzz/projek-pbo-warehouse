@@ -20,16 +20,6 @@ class BarangFurniture(Barang):
     def set_berat(self, berat):
         self.__berat = berat
 
-    def cek_material(self):
-        return self.__material
-
-    def estimasi_pengiriman(self):
-
-        if self.__berat < 10:
-            return "Pengiriman Ringan"
-
-        return "Pengiriman Berat"
-
     def kategori(self):
         return "Furniture"
 

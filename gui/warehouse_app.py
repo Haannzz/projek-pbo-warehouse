@@ -318,12 +318,12 @@ class WarehouseApp:
             "Nama",
             "Stok",
             "Kategori",
-            "Garansi",
+            "Garansi (bulan)",
             "Daya",
             "Expired",
             "Halal",
             "Material",
-            "Berat"
+            "Berat (Kg)"
         )
         
 
@@ -358,7 +358,7 @@ class WarehouseApp:
                 self.tree.column(col, width=50, minwidth=40, anchor="w")
             elif col == "Kategori":
                 self.tree.column(col, width=80, minwidth=70, anchor="w")
-            elif col in ("Garansi", "Daya", "Expired", "Halal", "Material", "Berat"):
+            elif col in ("Garansi", "Daya", "Expired", "Halal", "Material", "Berat (Kg)"):
                 self.tree.column(col, width=80, minwidth=60, anchor="w")
                 
         self.tree.bind(
