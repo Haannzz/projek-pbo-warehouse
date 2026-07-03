@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 class Barang(ABC):
     def __init__(self, kode, nama, stok):
         self.__kode = kode
@@ -70,7 +71,7 @@ class Barang(ABC):
             )
         
         else:
-            raise ValueError(f"Kategori tidak dikenal: {kategori}")
+            raise ValueError(f"Kategori tidak dikenal:d {kategori}")
         
     @staticmethod
     def validasi_kode(kode):

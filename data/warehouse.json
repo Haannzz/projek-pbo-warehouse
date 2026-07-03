@@ -1,18 +1,26 @@
 [
     {
-        "kode": "1001",
+        "kode": "1",
         "nama": "TV",
-        "stok": 10,
+        "stok": 2,
         "kategori": "Elektronik",
         "garansi": "36",
-        "daya": "250"
+        "daya": "300"
     },
     {
-        "kode": "1002",
+        "kode": "2",
+        "nama": "Ayam Potong",
+        "stok": 2,
+        "kategori": "Makanan",
+        "kadaluarsa": "04-07-2026",
+        "halal": "Ya"
+    },
+    {
+        "kode": "3",
         "nama": "Sofa",
-        "stok": 1,
+        "stok": 4,
         "kategori": "Furniture",
-        "material": "Kayu Jati",
-        "berat": 80.0
+        "material": "Kayu",
+        "berat": 100000000000000.0
     }
 ]
