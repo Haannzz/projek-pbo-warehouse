@@ -403,23 +403,23 @@ class WarehouseApp:
                 try:
                     kwargs["garansi"] = int(spec1)
                 except ValueError:
-                    raise Exception("Garansi harus berupa angka bulat (Integer).")
+                    raise Exception("Garansi harus berupa angka bulat (Integer)!")
                 try:
                     kwargs["daya"] = float(spec2)
                 except ValueError:
-                    raise Exception("Daya (Watt) harus berupa angka (Float).")
+                    raise Exception("Daya harus berupa angka desimal/bulat (Float)!")
             elif kategori == "Makanan":
                 kwargs["kadaluarsa"] = spec1
                 kwargs["halal"] = spec2
             elif kategori == "Furniture":
                 kwargs["material"] = spec1
                 try:
-                    berat_val = float(spec2)
-                    if berat_val > 1000:
-                        raise Exception("Berat tidak boleh melebihi 1000 Kg.")
-                    kwargs["berat"] = berat_val
+                    berat = float(spec2)
+                    if berat > 1000.0:
+                        raise Exception("Berat tidak boleh lebih dari 1000 Kg!")
+                    kwargs["berat"] = berat
                 except ValueError:
-                    raise Exception("Berat (Kg) harus berupa angka (Float).")
+                    raise Exception("Berat harus berupa angka desimal/bulat (Float)!")
                 
             self.manager.tambah_barang(kategori, kode, nama, stok, **kwargs)
             self.refresh_table()
@@ -449,23 +449,23 @@ class WarehouseApp:
                 try:
                     kwargs["garansi"] = int(spec1)
                 except ValueError:
-                    raise Exception("Garansi harus berupa angka bulat (Integer).")
+                    raise Exception("Garansi harus berupa angka bulat (Integer)!")
                 try:
                     kwargs["daya"] = float(spec2)
                 except ValueError:
-                    raise Exception("Daya (Watt) harus berupa angka (Float).")
+                    raise Exception("Daya harus berupa angka desimal/bulat (Float)!")
             elif kategori == "Makanan":
                 kwargs["kadaluarsa"] = spec1
                 kwargs["halal"] = spec2
             elif kategori == "Furniture":
                 kwargs["material"] = spec1
                 try:
-                    berat_val = float(spec2)
-                    if berat_val > 1000:
-                        raise Exception("Berat tidak boleh melebihi 1000 Kg.")
-                    kwargs["berat"] = berat_val
+                    berat = float(spec2)
+                    if berat > 1000.0:
+                        raise Exception("Berat tidak boleh lebih dari 1000 Kg!")
+                    kwargs["berat"] = berat
                 except ValueError:
-                    raise Exception("Berat (Kg) harus berupa angka (Float).")
+                    raise Exception("Berat harus berupa angka desimal/bulat (Float)!")
                 
             self.manager.update_barang(kode, nama, stok, **kwargs)
             self.refresh_table()
@@ -647,14 +647,14 @@ class WarehouseApp:
             barang = self.manager.cari_barang(str(data[0]))
             if barang:
                 self.clear_form()
-                self.kode_entry.config(state="normal")
                 self.kode_entry.insert(0, barang.get_kode())
-                self.kode_entry.config(state="readonly")
+                self.kode_entry.config(state="disabled")
                 self.nama_entry.insert(0, barang.get_nama())
                 self.stok_entry.insert(0, barang.get_stok())
                 
                 cat = barang.kategori()
                 self.kategori.set(cat)
+                self.kategori.config(state="disabled")
                 self.on_kategori_change()
                 
                 if cat == "Elektronik":
@@ -706,14 +706,14 @@ class WarehouseApp:
         data = self.tree.item(selected)["values"]
         self.clear_form()
         
-        self.kode_entry.config(state="normal")
         self.kode_entry.insert(0, data[0])
-        self.kode_entry.config(state="readonly")
+        self.kode_entry.config(state="disabled")
         self.nama_entry.insert(0, data[1])
         self.stok_entry.insert(0, data[2])
 
         cat = data[3]
         self.kategori.set(cat)
+        self.kategori.config(state="disabled")
         self.on_kategori_change()
 
         if cat == "Elektronik":
@@ -731,6 +731,7 @@ class WarehouseApp:
         self.kode_entry.delete(0, tk.END)
         self.nama_entry.delete(0, tk.END)
         self.stok_entry.delete(0, tk.END)
+        self.kategori.config(state="readonly")
 
         if hasattr(self, 'spec1_entry') and self.spec1_entry.winfo_exists():
             if isinstance(self.spec1_entry, ttk.Combobox):
