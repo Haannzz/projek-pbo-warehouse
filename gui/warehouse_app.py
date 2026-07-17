@@ -239,6 +239,7 @@ class WarehouseApp:
         create_button(btn_frame, "Update", "#F59E0B", "#D97706", self.update_barang, row=0, col=1)
         create_button(btn_frame, "Cari", "#3B82F6", "#2563EB", self.cari_barang, row=1, col=0)
         create_button(btn_frame, "Hapus", "#EF4444", "#DC2626", self.hapus_barang, row=1, col=1)
+        create_button(btn_frame, "Batal Pilih", "#6B7280", "#4B5563", self.batal_pilih, row=2, col=0, columnspan=2)
 
     def on_kategori_change(self, event=None):
 
@@ -400,26 +401,14 @@ class WarehouseApp:
             
             kwargs = {}
             if kategori == "Elektronik":
-                try:
-                    kwargs["garansi"] = int(spec1)
-                except ValueError:
-                    raise Exception("Garansi harus berupa angka bulat (Integer)!")
-                try:
-                    kwargs["daya"] = float(spec2)
-                except ValueError:
-                    raise Exception("Daya harus berupa angka desimal/bulat (Float)!")
+                kwargs["garansi"] = spec1
+                kwargs["daya"] = spec2
             elif kategori == "Makanan":
                 kwargs["kadaluarsa"] = spec1
                 kwargs["halal"] = spec2
             elif kategori == "Furniture":
                 kwargs["material"] = spec1
-                try:
-                    berat = float(spec2)
-                    if berat > 1000.0:
-                        raise Exception("Berat tidak boleh lebih dari 1000 Kg!")
-                    kwargs["berat"] = berat
-                except ValueError:
-                    raise Exception("Berat harus berupa angka desimal/bulat (Float)!")
+                kwargs["berat"] = spec2
                 
             self.manager.tambah_barang(kategori, kode, nama, stok, **kwargs)
             self.refresh_table()
@@ -446,26 +435,14 @@ class WarehouseApp:
             
             kwargs = {}
             if kategori == "Elektronik":
-                try:
-                    kwargs["garansi"] = int(spec1)
-                except ValueError:
-                    raise Exception("Garansi harus berupa angka bulat (Integer)!")
-                try:
-                    kwargs["daya"] = float(spec2)
-                except ValueError:
-                    raise Exception("Daya harus berupa angka desimal/bulat (Float)!")
+                kwargs["garansi"] = spec1
+                kwargs["daya"] = spec2
             elif kategori == "Makanan":
                 kwargs["kadaluarsa"] = spec1
                 kwargs["halal"] = spec2
             elif kategori == "Furniture":
                 kwargs["material"] = spec1
-                try:
-                    berat = float(spec2)
-                    if berat > 1000.0:
-                        raise Exception("Berat tidak boleh lebih dari 1000 Kg!")
-                    kwargs["berat"] = berat
-                except ValueError:
-                    raise Exception("Berat harus berupa angka desimal/bulat (Float)!")
+                kwargs["berat"] = spec2
                 
             self.manager.update_barang(kode, nama, stok, **kwargs)
             self.refresh_table()
@@ -495,6 +472,11 @@ class WarehouseApp:
                 "Error",
                 str(e)
             )
+
+    def batal_pilih(self):
+        for item in self.tree.selection():
+            self.tree.selection_remove(item)
+        self.clear_form()
 
     def cari_barang(self):
         search_win = tk.Toplevel(self.root)
@@ -648,13 +630,11 @@ class WarehouseApp:
             if barang:
                 self.clear_form()
                 self.kode_entry.insert(0, barang.get_kode())
-                self.kode_entry.config(state="disabled")
                 self.nama_entry.insert(0, barang.get_nama())
                 self.stok_entry.insert(0, barang.get_stok())
                 
                 cat = barang.kategori()
                 self.kategori.set(cat)
-                self.kategori.config(state="disabled")
                 self.on_kategori_change()
                 
                 if cat == "Elektronik":
@@ -666,6 +646,9 @@ class WarehouseApp:
                 elif cat == "Furniture":
                     self.spec1_entry.insert(0, barang.get_material())
                     self.spec2_entry.insert(0, barang.get_berat())
+                
+                self.kode_entry.config(state="readonly")
+                self.kategori.config(state="disabled")
                 
                 search_win.destroy()
    
@@ -707,13 +690,11 @@ class WarehouseApp:
         self.clear_form()
         
         self.kode_entry.insert(0, data[0])
-        self.kode_entry.config(state="disabled")
         self.nama_entry.insert(0, data[1])
         self.stok_entry.insert(0, data[2])
 
         cat = data[3]
         self.kategori.set(cat)
-        self.kategori.config(state="disabled")
         self.on_kategori_change()
 
         if cat == "Elektronik":
@@ -725,6 +706,9 @@ class WarehouseApp:
         elif cat == "Furniture":
             self.spec1_entry.insert(0, data[8])
             self.spec2_entry.insert(0, data[9])
+            
+        self.kode_entry.config(state="readonly")
+        self.kategori.config(state="disabled")
 
     def clear_form(self):
         self.kode_entry.config(state="normal")

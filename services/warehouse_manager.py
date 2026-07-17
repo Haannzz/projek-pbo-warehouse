@@ -55,7 +55,15 @@ class WarehouseManager:
                 raise ValueError("Masa garansi tidak boleh kosong")
             if not daya:
                 raise ValueError("Daya listrik tidak boleh kosong")
-            barang = BarangElektronik(kode, nama, stok, garansi, daya)
+            try:
+                garansi_val = int(garansi)
+            except ValueError:
+                raise ValueError("Masa garansi harus berupa angka bulat (Integer)")
+            try:
+                daya_val = float(daya)
+            except ValueError:
+                raise ValueError("Daya listrik harus berupa angka (Float)")
+            barang = BarangElektronik(kode, nama, stok, garansi_val, daya_val)
 
         elif kategori == "Makanan":
             kadaluarsa = kwargs.get("kadaluarsa", "").strip()
@@ -80,9 +88,11 @@ class WarehouseManager:
             try:
                 berat = float(berat_str)
             except ValueError:
-                raise ValueError("Berat harus berupa angka")
+                raise ValueError("Berat harus berupa angka (Float)")
             if berat <= 0:
                 raise ValueError("Berat tidak boleh 0 atau kurang")
+            if berat > 1000.0:
+                raise ValueError("Berat maksimal adalah 1000 Kg")
             barang = BarangFurniture(kode, nama, stok, material, berat)
 
         else:
@@ -135,8 +145,16 @@ class WarehouseManager:
                 raise ValueError("Masa garansi tidak boleh kosong")
             if not daya:
                 raise ValueError("Daya listrik tidak boleh kosong")
-            barang.set_garansi(garansi)
-            barang.set_daya(daya)
+            try:
+                garansi_val = int(garansi)
+            except ValueError:
+                raise ValueError("Masa garansi harus berupa angka bulat (Integer)")
+            try:
+                daya_val = float(daya)
+            except ValueError:
+                raise ValueError("Daya listrik harus berupa angka (Float)")
+            barang.set_garansi(garansi_val)
+            barang.set_daya(daya_val)
             
         elif barang.kategori() == "Makanan":
             kadaluarsa = kwargs.get("kadaluarsa", "").strip()
@@ -162,10 +180,12 @@ class WarehouseManager:
             try:
                 berat = float(berat_str)
             except ValueError:
-                raise ValueError("Berat harus berupa angka")
+                raise ValueError("Berat harus berupa angka (Float)")
             
             if berat <= 0:
                 raise ValueError("Berat tidak boleh 0 atau kurang")
+            if berat > 1000.0:
+                raise ValueError("Berat maksimal adalah 1000 Kg")
             barang.set_material(material)
             barang.set_berat(berat)
 
