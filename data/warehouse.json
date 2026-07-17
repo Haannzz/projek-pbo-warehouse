@@ -1,42 +1,18 @@
 [
     {
         "kode": "1",
-        "nama": "TV",
-        "stok": 2,
+        "nama": "Mobil Remote",
+        "stok": 1,
         "kategori": "Elektronik",
-        "garansi": "36",
-        "daya": "300"
+        "garansi": "12",
+        "daya": "5"
     },
     {
         "kode": "2",
-        "nama": "Ayam Potong",
-        "stok": 2,
+        "nama": "Mobil Remote",
+        "stok": 1,
         "kategori": "Makanan",
-        "kadaluarsa": "04-07-2026",
+        "kadaluarsa": "19-07-2026",
         "halal": "Ya"
-    },
-    {
-        "kode": "3",
-        "nama": "Sofa",
-        "stok": 4,
-        "kategori": "Furniture",
-        "material": "Kayu",
-        "berat": 100000000000000.0
-    },
-    {
-        "kode": "4",
-        "nama": "Kartu Poker",
-        "stok": 1,
-        "kategori": "Furniture",
-        "material": "Kertas",
-        "berat": 0.5
-    },
-    {
-        "kode": "5",
-        "nama": "Kursi Rotan",
-        "stok": 1,
-        "kategori": "Furniture",
-        "material": "Rotan",
-        "berat": 1e+30
     }
 ]

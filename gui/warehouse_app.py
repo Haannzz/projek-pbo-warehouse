@@ -400,14 +400,26 @@ class WarehouseApp:
             
             kwargs = {}
             if kategori == "Elektronik":
-                kwargs["garansi"] = spec1
-                kwargs["daya"] = spec2
+                try:
+                    kwargs["garansi"] = int(spec1)
+                except ValueError:
+                    raise Exception("Garansi harus berupa angka bulat (Integer).")
+                try:
+                    kwargs["daya"] = float(spec2)
+                except ValueError:
+                    raise Exception("Daya (Watt) harus berupa angka (Float).")
             elif kategori == "Makanan":
                 kwargs["kadaluarsa"] = spec1
                 kwargs["halal"] = spec2
             elif kategori == "Furniture":
                 kwargs["material"] = spec1
-                kwargs["berat"] = spec2
+                try:
+                    berat_val = float(spec2)
+                    if berat_val > 1000:
+                        raise Exception("Berat tidak boleh melebihi 1000 Kg.")
+                    kwargs["berat"] = berat_val
+                except ValueError:
+                    raise Exception("Berat (Kg) harus berupa angka (Float).")
                 
             self.manager.tambah_barang(kategori, kode, nama, stok, **kwargs)
             self.refresh_table()
@@ -434,14 +446,26 @@ class WarehouseApp:
             
             kwargs = {}
             if kategori == "Elektronik":
-                kwargs["garansi"] = spec1
-                kwargs["daya"] = spec2
+                try:
+                    kwargs["garansi"] = int(spec1)
+                except ValueError:
+                    raise Exception("Garansi harus berupa angka bulat (Integer).")
+                try:
+                    kwargs["daya"] = float(spec2)
+                except ValueError:
+                    raise Exception("Daya (Watt) harus berupa angka (Float).")
             elif kategori == "Makanan":
                 kwargs["kadaluarsa"] = spec1
                 kwargs["halal"] = spec2
             elif kategori == "Furniture":
                 kwargs["material"] = spec1
-                kwargs["berat"] = spec2
+                try:
+                    berat_val = float(spec2)
+                    if berat_val > 1000:
+                        raise Exception("Berat tidak boleh melebihi 1000 Kg.")
+                    kwargs["berat"] = berat_val
+                except ValueError:
+                    raise Exception("Berat (Kg) harus berupa angka (Float).")
                 
             self.manager.update_barang(kode, nama, stok, **kwargs)
             self.refresh_table()
@@ -623,7 +647,9 @@ class WarehouseApp:
             barang = self.manager.cari_barang(str(data[0]))
             if barang:
                 self.clear_form()
+                self.kode_entry.config(state="normal")
                 self.kode_entry.insert(0, barang.get_kode())
+                self.kode_entry.config(state="readonly")
                 self.nama_entry.insert(0, barang.get_nama())
                 self.stok_entry.insert(0, barang.get_stok())
                 
@@ -680,7 +706,9 @@ class WarehouseApp:
         data = self.tree.item(selected)["values"]
         self.clear_form()
         
+        self.kode_entry.config(state="normal")
         self.kode_entry.insert(0, data[0])
+        self.kode_entry.config(state="readonly")
         self.nama_entry.insert(0, data[1])
         self.stok_entry.insert(0, data[2])
 
@@ -699,6 +727,7 @@ class WarehouseApp:
             self.spec2_entry.insert(0, data[9])
 
     def clear_form(self):
+        self.kode_entry.config(state="normal")
         self.kode_entry.delete(0, tk.END)
         self.nama_entry.delete(0, tk.END)
         self.stok_entry.delete(0, tk.END)
