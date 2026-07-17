@@ -22,5 +22,21 @@
         "kategori": "Furniture",
         "material": "Kayu",
         "berat": 100000000000000.0
+    },
+    {
+        "kode": "4",
+        "nama": "Kartu Poker",
+        "stok": 1,
+        "kategori": "Furniture",
+        "material": "Kertas",
+        "berat": 0.5
+    },
+    {
+        "kode": "5",
+        "nama": "Kursi Rotan",
+        "stok": 1,
+        "kategori": "Furniture",
+        "material": "Rotan",
+        "berat": 1e+30
     }
 ]

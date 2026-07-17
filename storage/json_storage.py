@@ -16,7 +16,7 @@ class JsonStorage:
             with open(self.filename, "r") as file:
                 return json.load(file)
         except:
-            return []
+            return [ ]
 
     def save(self, data):
 

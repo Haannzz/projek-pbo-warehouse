@@ -295,7 +295,6 @@ class WarehouseApp:
             self.spec2_entry = create_dynamic_entry("Berat (Kg)")
 
     def buat_tabel(self):
-
         table_card = tk.Frame(self.right_pane, bg="#FFFFFF", bd=1, relief="flat", highlightbackground="#E5E7EB", highlightthickness=1)
         table_card.pack(fill="both", expand=True)
         
